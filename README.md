@@ -10,11 +10,11 @@ Feature Transformation is a technique by which we can boost our model performanc
 - Step4: Print the transformed features.
 ### Program:
 ```
-Developed By: Anish Raj P
-Register No: 212222230010
+Developed By: BALAMURUGAN B
+Register No: 212222230016
 ```
 ## Importing libraries and reading csv file:
-  ```Python
+  ```
   import numpy as np
   import pandas as pd
   import matplotlib.pyplot as plt
@@ -25,7 +25,7 @@ Register No: 212222230010
   df=pd.read_csv("Data_to_Transform.csv")
   ```
 ## Basic Information:
-  ```Python
+  ```
   df.head()
   df.info()
   df.describe()
@@ -35,7 +35,7 @@ Register No: 212222230010
   ![Basic Information](3.png)
   
 ## Before Transformation:
-  ```Python
+  ```
   sm.qqplot(df['Highly Positive Skew'],fit=True,line='45')
   plt.title("Highly Positive Skew")
   plt.show()
@@ -59,7 +59,7 @@ Register No: 212222230010
 
 
 ## Log Transformation:
-  ```Python
+  ```
   df['Highly Positive Skew'] = np.log(df['Highly Positive Skew'])
   sm.qqplot(df['Highly Positive Skew'],fit=True,line='45')
   plt.title("Highly Positive Skew")
@@ -74,7 +74,7 @@ Register No: 212222230010
   ![Log Transformation](9.png)
   
 ## Reciprocal Transformation:
-  ```Python
+  ```
   df['Highly Positive Skew'] = 1/df['Highly Positive Skew']
   sm.qqplot(df['Highly Positive Skew'],fit=True,line='45')
   plt.title("Highly Positive Skew")
@@ -83,7 +83,7 @@ Register No: 212222230010
   ![Reciprocal Transformation](10.png)
 
 ## SquareRoot Transformation:
-  ```Python
+  ```
   df['Highly Positive Skew'] = df['Highly Positive Skew']**(1/1.2)
   sm.qqplot(df['Highly Positive Skew'],fit=True,line='45')
   plt.title("Highly Positive Skew")
@@ -92,7 +92,7 @@ Register No: 212222230010
   ![SquareRoot Transformation](11.png)
 
 ## Power Transformation:
-  ```Python
+  ```
   df['Moderate Positive Skew_1'], parameters=stats.yeojohnson(df['Moderate Positive Skew'])
   sm.qqplot(df['Moderate Positive Skew_1'],fit=True,line='45')
   plt.title("Moderate Positive Skew")
@@ -109,7 +109,7 @@ Register No: 212222230010
 
   
 ## Quantile Transformation:
-  ```Python
+  ```
   qt = QuantileTransformer(output_distribution = 'normal')
   df['ModerateNegativeSkew_2'] = pd.DataFrame(qt.fit_transform(df[['Moderate Negative Skew']]))
   sm.qqplot(df['ModerateNegativeSkew_2'],fit=True,line='45')
